@@ -1,0 +1,54 @@
+(ImageMagick convert not available)
+Bazaar test repository NOT FOUND. Skipping functional tests !!!
+CVS test repository NOT FOUND. Skipping functional tests !!!
+Filesystem test repository NOT FOUND. Skipping functional tests !!!
+Git test repository NOT FOUND. Skipping functional tests !!!
+Mercurial test repository NOT FOUND. Skipping functional tests !!!
+Subversion test repository NOT FOUND. Skipping functional tests !!!
+(ImageMagick convert not available)
+(Test LDAP server not configured)
+Bazaar test repository NOT FOUND. Skipping unit tests !!!
+Cvs test repository NOT FOUND. Skipping unit tests !!!
+Filesystem test repository NOT FOUND. Skipping unit tests !!! See doc/RUNNING_TESTS.
+Git test repository NOT FOUND. Skipping unit tests !!!
+Mercurial test repository NOT FOUND. Skipping unit tests !!!
+Subversion test repository NOT FOUND. Skipping unit tests !!!
+Bazaar test repository NOT FOUND. Skipping unit tests !!!
+CVS test repository NOT FOUND. Skipping unit tests !!!
+Filesystem test repository NOT FOUND. Skipping unit tests !!! See doc/RUNNING_TESTS.
+Git test repository NOT FOUND. Skipping unit tests !!!
+Mercurial test repository NOT FOUND. Skipping unit tests !!!
+Subversion test repository NOT FOUND. Skipping unit tests !!!
+Skipping LDAP tests.
+Run options: --seed 52446
+
+# Running:
+
+.................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................S............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................E
+
+Error:
+QueryTest#test_filter_last_updated_by_should_ignore_private_notes_that_are_not_visible:
+ActiveRecord::StatementInvalid: Mysql2::Error: This version of MariaDB doesn't yet support 'SUBQUERY in ROW in left expression of IN/ALL/ANY': SELECT `issues`.* FROM `issues` INNER JOIN `issue_statuses` ON `issue_statuses`.`id` = `issues`.`status_id` INNER JOIN `trackers` ON `trackers`.`id` = `issues`.`tracker_id` INNER JOIN `projects` ON `projects`.`id` = `issues`.`project_id` INNER JOIN `enumerations` ON `enumerations`.`id` = `issues`.`priority_id` AND `enumerations`.`type` IN ('IssuePriority') WHERE ( EXISTS (SELECT 1 FROM journals sj WHERE sj.journalized_type='Issue' AND sj.journalized_id=issues.id AND (sj.user_id IN (592)) AND sj.id = (SELECT MAX(journals.id) FROM journals   WHERE journals.journalized_type='Issue' AND journals.journalized_id=issues.id   AND ((journals.private_notes = FALSE OR journals.user_id = 6 OR (1=0))))))
+    test/unit/query_test.rb:149:in `find_issues_with_query'
+    test/unit/query_test.rb:809:in `block in test_filter_last_updated_by_should_ignore_private_notes_that_are_not_visible'
+    test/test_helper.rb:106:in `with_current_user'
+    test/unit/query_test.rb:807:in `test_filter_last_updated_by_should_ignore_private_notes_that_are_not_visible'
+
+bin/rails test test/unit/query_test.rb:797
+
+...E
+
+Error:
+QueryTest#test_filter_last_updated_by:
+ActiveRecord::StatementInvalid: Mysql2::Error: This version of MariaDB doesn't yet support 'SUBQUERY in ROW in left expression of IN/ALL/ANY': SELECT `issues`.* FROM `issues` INNER JOIN `issue_statuses` ON `issue_statuses`.`id` = `issues`.`status_id` INNER JOIN `trackers` ON `trackers`.`id` = `issues`.`tracker_id` INNER JOIN `projects` ON `projects`.`id` = `issues`.`project_id` INNER JOIN `enumerations` ON `enumerations`.`id` = `issues`.`priority_id` AND `enumerations`.`type` IN ('IssuePriority') WHERE ( EXISTS (SELECT 1 FROM journals sj WHERE sj.journalized_type='Issue' AND sj.journalized_id=issues.id AND (sj.user_id IN (594)) AND sj.id = (SELECT MAX(journals.id) FROM journals   WHERE journals.journalized_type='Issue' AND journals.journalized_id=issues.id   AND ((journals.private_notes = FALSE OR journals.user_id = 6 OR (1=0))))))
+    test/unit/query_test.rb:149:in `find_issues_with_query'
+    test/unit/query_test.rb:794:in `test_filter_last_updated_by'
+
+bin/rails test test/unit/query_test.rb:783
+
+.....................................................................................................................................................................................................................................................................................................................................................................................................SS.................
+
+Finished in 320.729091s, 13.6533 runs/s, 57.7216 assertions/s.
+4379 runs, 18513 assertions, 0 failures, 2 errors, 3 skips
+
+You have skipped tests. Run with --verbose for details.
